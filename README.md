@@ -37,6 +37,15 @@ python manage.py migrate
 
 载模型后请将`imdNet/upimg/utils.py`中的`model_path`改为模型所在**文件夹**路径。
 
+### 如果使用虚拟机共享文件夹可能遇到的问题
+查看共享文件夹是否在`/mnt/hgfs`下，如果不在，输入命令  
+```
+vmware-hgfsclient
+```
+发现有共享文件夹，则执行挂载  
+```
+sudo vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other 
+```
 
 
 ## 执行
