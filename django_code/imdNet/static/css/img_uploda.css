@@ -1,0 +1,46 @@
+.title{ text-align:center}
+
+.button{
+    background-color: #14a1b6;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+}
+.disabled {
+    background-color: #07373e;
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.text{
+    font-size:20px;
+    margin: 40px;
+}
+
+.form_box1{
+    text-align:center;
+    margin: 80px;
+}
+.form_box2{
+    text-align:center;
+    margin: 80px;
+}
+
+.img_show{
+    text-align:center;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img_show img{
+    height: 100%;
+    
+}

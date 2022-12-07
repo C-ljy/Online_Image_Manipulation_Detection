@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图像篡改检测</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/img_uploda.css" />
+</head>
+<body>
+
+
+<h1 class=title>图像篡改检测</h1>
+
+<form id="img-form" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form_box1">
+        <p class="text">上传需要检测的图片</p>
+        <input type="file" name="img" id="img">
+    </div>
+    <div class="form_box2">
+        <input onclick="upload_img()" type="button" value="提交" id="sbm_btn" class="button">
+    </div>
+</form>
+
+<div class="img_show" id="img_show">
+</div>
+
+<script type="text/javascript" src="/static/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+    function upload_img() {
+        let formData = new FormData($("#img-form")[0]);
+        // 修改button样式
+        var sbm_btn = document.getElementById("sbm_btn");
+        sbm_btn.value="处理中";
+        sbm_btn.className = sbm_btn.className+" disabled";
+        //sbm_btn.onclick=null;
+        
+        $.ajax({
+            url: "image_upload/", //请求路径
+            type: 'POST', // 请求类型
+            data: formData, // 请求数据
+            dataType: "JSON", // 返回数据格式
+            contentType: false, //表示不处理数据
+            processData: false,
+            cache: false,
+            success: function (res) {
+                var data = res.data;
+                if (data === 1) { 
+                    alert("上传成功");
+                    var img_show = document.getElementById("img_show");
+                    // img_show.innerHTML='<img src="'+'{{MEDIA_URL}}{{ res.info }}'+'"/>';
+                    var img_new = document.getElementById("img_new0");
+                    if (img_new == null){
+                        img_new = document.createElement("img");
+                        img_new.id = "img_new0";
+                        img_show.appendChild(img_new);
+                    }
+                    img_new.src = {{MEDIA_URL}}+res.info;
+                    console.log({{MEDIA_URL}});
+                    console.log(res.info);
+                    console.log(img_new.src);
+                    
+                }else if (data === 2){
+                    alert("图片格式异常, "+res.info);
+                }else if (data === 3){
+                    alert("图像篡改检测异常");
+                }else{
+                    alert("上传失败");
+                }
+                sbm_btn.value="提交";
+                sbm_btn.className = "button";
+            },
+            error: function (data) {
+                console.log(data);
+                sbm_btn.value="提交";
+                sbm_btn.className = "button";
+            }
+            
+        });
+    }
+</script>
+
+</body>
+</html>
+
+
