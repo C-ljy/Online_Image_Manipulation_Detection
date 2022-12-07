@@ -50,7 +50,6 @@ python manage.py runserver
 
 在浏览器中输入http://127.0.0.1:8000/，进入应用页面。
 
-ImageForTest文件夹中提供了一些可做测试的图片。
 
 
 
