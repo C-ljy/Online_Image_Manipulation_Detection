@@ -22,7 +22,7 @@ pip install cython_bbox
 
 ## 数据迁移
 
-数据库使用Ubuntu自带的SQLite，若imdNet文件夹下不含db.sqlite文件，请执行以下命令：
+数据库使用Ubuntu自带的SQLite，若`imdNet`文件夹下不含`db.sqlite3`文件，请执行以下命令：
 
 ```
 python manage.py makemigrations
@@ -35,7 +35,7 @@ python manage.py migrate
 
 链接: https://pan.baidu.com/s/1Mp5a56H4CP9Et5yDu0GDnQ?pwd=qrzj 提取码: qrzj 复制这段内容后打开百度网盘手机App，操作更方便哦
 
-载模型后请将`imgNet/upimg/utils.py`中的`model_path`改为模型所在**文件夹**路径。
+载模型后请将`imdNet/upimg/utils.py`中的`model_path`改为模型所在**文件夹**路径。
 
 
 
@@ -50,7 +50,7 @@ python manage.py runserver
 
 在浏览器中输入http://127.0.0.1:8000/，进入应用页面。
 
-
+ImageForTest文件夹中提供了一些可做测试的图片。
 
 
 
